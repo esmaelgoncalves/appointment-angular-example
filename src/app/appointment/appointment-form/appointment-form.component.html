@@ -1,0 +1,57 @@
+<div class="container">
+
+  <div *ngIf="appointmentForm.invalid && appointmentForm.dirty" class="alert alert-danger">
+    Preencha todos os campos corretamente.
+  </div>
+  <div class="alert alert-danger" *ngIf="hasErro">
+    <strong>Erro!</strong> {{ mensagem }}
+  </div>
+  <div class="alert alert-success" *ngIf="isSucesso">
+    <strong>Sucesso!</strong> {{ mensagem }}
+  </div>
+
+  <form autocomplete="off" #appointmentForm="ngForm" (ngSubmit)="salvar(appointmentForm)">
+    <div class="form-group" [class.has-error]="titulo.invalid && titulo.touched">
+      <label class="control-label">Titulo</label>
+      <input type="text" class="form-control" name="titulo" (focus)=limparMensagens()
+      [(ngModel)]="appointment.titulo" required minlength="3" #titulo="ngModel">
+
+      <div class="control-label" *ngIf="titulo.hasError('required') && titulo.touched">Informe um título</div>
+    </div>
+
+    <div class="form-group" [class.has-error]="descricao.invalid && descricao.touched">
+      <label class="control-label">Descrição</label>
+      <input type="text" class="form-control" name="descricao" [(ngModel)]="appointment.descricao" required #descricao="ngModel">
+
+      <div class="control-label" *ngIf="descricao.invalid && descricao.touched">Informe uma descrição</div>
+    </div>
+
+    <div class="form-group" [class.has-error]="tipo.invalid && tipo.touched">
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <label class="control-label">Tipo</label>
+          <select class="form-control" name="tipo" [(ngModel)]="appointment.tipo" required #tipo="ngModel">
+            <option value="">Selecione</option>
+            <option *ngFor="let tipo of tipos"
+              [value]="tipo">{{ tipo }}</option>
+          </select>
+          <div class="control-label" *ngIf="tipo.invalid && tipo.touched">Informe um tipo</div>
+        </div>
+
+        <div class="col-12 col-sm-6">
+          <label class="control-label">Data</label>
+          <input type="date" class="form-control" name="data" [(ngModel)]="appointment.data" 
+            required #data="ngModel">
+          <div class="control-label" *ngIf="data.invalid && data.touched">Informe uma data</div>
+        </div>
+
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!appointmentForm.valid">Salvar</button>
+  </form>
+
+  <app-appointment-grid [appointments] = appointments (excluir)="aoExcluir($event)" (editar)="aoEditar($event)"></app-appointment-grid>
+  
+
+</div>

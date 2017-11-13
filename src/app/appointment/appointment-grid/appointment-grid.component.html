@@ -1,0 +1,40 @@
+<table class="table" style="margin-top: 20px">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Titulo</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+            <th>Data</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let appointment of appointments">
+            <td>{{ appointment.id }}</td>
+            <td>{{ appointment.titulo }}
+                <!--<div class="input-group">
+            <input type="text" class="form-control" [(ngModel)]="appointment.titulo">
+            <span class="input-group-btn">
+              <button class="btn btn-primary"
+                (click)="atualizar(livro)">Atualizar</button> -
+            </span>
+          </div> -->
+            </td>
+            <td>{{ appointment.descricao }}</td>
+            <td>
+                <span class="label" [ngClass]="{ 'label-success': isPersonal(appointment), 'label-primary': !isPersonal(appointment) }">{{ appointment.tipo }}
+          </span>
+            </td>
+            <td>{{ appointment.data | date:'dd/MM/yyyy' }}</td>
+            <td>
+                <button class="btn btn-default" (click)="atualizar(appointment)" data-toggle="tooltip" data-placement="top" title="Editar">
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+          </button>
+                <button class="btn btn-default" (click)="excluir(appointment)" data-toggle="tooltip" data-placement="top" title="Excluir">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

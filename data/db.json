@@ -1,0 +1,32 @@
+{
+  "appointments": [
+    {
+      "id": 1,
+      "titulo": "Consulta Médica",
+      "descricao": "Consulta de cardiologista na clínica Corazon",
+      "tipo": "Pessoal",
+      "data": "12/01/2017"
+    },
+    {
+      "id": 2,
+      "titulo": "Comemoração Aniversário",
+      "descricao": "Dia do meu Aniversário. Comemoração com amigos",
+      "tipo": "Pessoal",
+      "data": "11/28/2017"
+    },
+    {
+      "id": 3,
+      "titulo": "Entrevista",
+      "descricao": "Entrevista de trabalho no Facebook",
+      "tipo": "Trabalho",
+      "data": "12/02/2017"
+    },
+    {
+      "id": 4,
+      "titulo": "Reunião com a diretoria",
+      "descricao": "Reunião com a diretoria para definição das novas metas",
+      "tipo": "Trabalho",
+      "data": "12/05/2017"
+    }
+  ]
+}
